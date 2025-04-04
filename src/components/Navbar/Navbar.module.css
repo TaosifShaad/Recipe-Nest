@@ -12,49 +12,24 @@ body {
   background: #ecf0f3;
 }
 
-/* Container for the entire navbar */
 .navcontainer {
+  width: 100%;
   position: relative;
 }
 
-/* Hamburger container (only visible on mobile) */
-.hamburger {
-  display: none;
-}
-
-@media (max-width: 940px) {
-  .hamburger {
-    display: block;
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 1100;
-  }
-}
-
-/* Sidebar styles */
-.side_bar {
+/* Header: always visible */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ecf0f3;
+  padding: 12px 20px;
+  box-shadow: -3px -3px 7px #ffffff, 3px 3px 5px #ceced1;
   position: fixed;
   top: 0;
   left: 0;
-  width: 250px;
-  height: 100vh;
-  background: #ecf0f3;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-  z-index: 1000;
-}
-
-.side_bar.active {
-  transform: translateX(0);
-}
-
-/* Title and logo */
-.title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 20px;
+  width: 100%;
+  z-index: 1200;
 }
 
 .logo {
@@ -63,73 +38,128 @@ body {
   color: #31344b;
 }
 
-/* Button styles for hamburger and close icons */
-.button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #31344b;
-  font-size: 24px;
+/* Navigation Menu (base style) */
+.nav {
+  background: #ecf0f3;
+  transition: transform 0.3s ease;
+  z-index: 1100;
 }
 
-/* Menu list styles */
-.menu {
-  list-style: none;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
+/* Mobile styles */
+@media (max-width: 940px) {
+  /* Show hamburger button on mobile */
+  .hamburger {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #31344b;
+  }
+  /* Position nav as off-canvas sidebar on mobile */
+  .nav {
+    position: fixed;
+    top: 60px; /* below fixed header */
+    left: 0;
+    width: 250px;
+    height: calc(100vh - 60px);
+    transform: translateX(-100%);
+    padding: 12px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  /* When active, slide in the nav sidebar */
+  .nav.active {
+    transform: translateX(0);
+  }
+  /* Menu list: vertical */
+  .menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 0;
+    margin: 0;
+  }
+  /* Mobile-specific close button */
+  .closeButton {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #31344b;
+    align-self: flex-end;
+    margin-top: 10px;
+  }
 }
 
-.menu li {
-  margin: 10px 0;
+/* Desktop styles */
+@media (min-width: 941px) {
+  /* In desktop mode, display nav inline within header */
+  .nav {
+    position: relative;
+    top: 0;
+    transform: translateX(0);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    height: auto;
+  }
+  /* Menu list: horizontal */
+  .menu {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+  }
+  /* Neumorphism effect on menu links */
+  .menu li a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #31344b;
+    font-weight: 400;
+    padding: 10px 12px;
+    transition: all 0.3s ease;
+    box-shadow: -3px -3px 7px #ffffff, 3px 3px 5px #ceced1;
+    position: relative;
+  }
+  .menu li a:hover:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ceced1;
+  }
+  .menu li a:hover {
+    color: #3498db;
+  }
+  /* Hide mobile-specific buttons on desktop */
+  .hamburger,
+  .closeButton {
+    display: none;
+  }
 }
 
-.menu a {
-  text-decoration: none;
-  font-size: 18px;
-  color: #31344b;
-  font-weight: 400;
-  padding: 10px 12px;
-  transition: color 0.3s ease;
+/* Menu link styling for both mobile and desktop */
+.menu li a {
+  /* Common styles if needed */
 }
 
-.menu a:hover {
-  color: #3498db;
-}
-
-/* Media icons */
+/* Media icons styling */
 .media_icons {
   display: flex;
+  gap: 10px;
   justify-content: center;
-  padding: 10px;
+  padding: 10px 0;
 }
 
 .media_icons a {
   color: #31344b;
   font-size: 24px;
-  margin: 0 5px;
-}
-
-/* On desktop, show sidebar as a top navbar */
-@media (min-width: 941px) {
-  .side_bar {
-    transform: translateX(0);
-    position: relative;
-    width: 100%;
-    height: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .menu {
-    flex-direction: row;
-    padding: 0;
-  }
-  .menu li {
-    margin: 0 10px;
-  }
-  /* Hide hamburger and close buttons on desktop */
-  .hamburger, .button {
-    display: none;
-  }
 }

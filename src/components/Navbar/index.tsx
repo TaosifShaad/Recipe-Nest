@@ -10,55 +10,47 @@ import styles from './Navbar.module.css'
 
 const index = () => {
     const [isOpen, setIsOpen] = useState(false);
-
-    const toggleMenu = () => {
-        setIsOpen(prev => !prev);
-    };
+    const toggleMenu = () => setIsOpen(prev => !prev);
 
     return (
         <div className={styles.navcontainer}>
-            {/* Hamburger button (visible on mobile only) */}
-            <div className={styles.hamburger}>
-                {!isOpen && (
-                    <button className={styles.button} onClick={toggleMenu}>
-                        <FontAwesomeIcon icon={faBars} />
-                    </button>
-                )}
-            </div>
+            <header className={styles.header}>
+                <div className={styles.logo}>CodingLab</div>
 
-            {/* Sidebar */}
-            <div className={`${styles.side_bar} ${isOpen ? styles.active : ''}`}>
-                <div className={styles.title}>
-                    <div className={styles.logo}>CodingLab</div>
-                    <button className={styles.button} onClick={toggleMenu}>
-                        <FontAwesomeIcon icon={faTimes} />
-                    </button>
-                </div>
-                <ul className={styles.menu}>
-                    <li>
-                        <a href="#">
-                            <FontAwesomeIcon icon={faQrcode} /> Dashboard
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <FontAwesomeIcon icon={faStream} /> Overview
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <FontAwesomeIcon icon={faQuestionCircle} /> About
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <FontAwesomeIcon icon={faPhoneVolume} /> Contact
-                        </a>
-                    </li>
-                </ul>
-            </div>
+                {/* Navigation menu (same markup for both desktop and mobile) */}
+                <nav className={`${styles.nav} ${isOpen ? styles.active : ''}`}>
+                    <ul className={styles.menu}>
+                        <li>
+                            <a href="#">
+                                <FontAwesomeIcon icon={faQrcode} /> Dashboard
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <FontAwesomeIcon icon={faStream} /> Overview
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <FontAwesomeIcon icon={faQuestionCircle} /> About
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <FontAwesomeIcon icon={faPhoneVolume} /> Contact
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                {/* Hamburger button: visible only on mobile */}
+                <button className={styles.hamburger} onClick={toggleMenu}>
+                    <FontAwesomeIcon icon={faBars} />
+                </button>
+            </header>
         </div>
     );
+
 };
 
 export default index
