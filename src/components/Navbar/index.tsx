@@ -15,7 +15,7 @@ const index = () => {
     return (
         <div className={styles.navcontainer}>
             <header className={styles.header}>
-                <div className={styles.logo}>CodingLab</div>
+                <div className={styles.logo}>Recipe Nest</div>
 
                 {/* Navigation menu (same markup for both desktop and mobile) */}
                 <nav className={`${styles.nav} ${isOpen ? styles.active : ''}`}>
