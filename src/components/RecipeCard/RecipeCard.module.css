@@ -6,4 +6,53 @@
         20px -20px 60px #fafafa;
     width: 78%;
     margin: auto;
+    margin-bottom: 50px;
+    display: flex;
+    gap: 30px;
+}
+
+img {
+    width: 300px;
+    aspect-ratio: 1/1;
+    border-radius: 12px;
+    flex: 0 0 30%;
+}
+
+.container {
+    flex: 1;
+}
+
+ul {
+    margin-left: 35px;
+}
+
+.fav {
+    font-size: 30px;
+    color: magenta;
+}
+
+.recipeBtn {
+    /* display: flex;
+    place-self: flex-end;
+    margin-top: 1%; */
+    padding: 14px 52px;
+    margin-right: -56px;
+    border-radius: 5px;
+    color: white;
+    background: orange;
+    font-weight: bolder;
+}
+
+.info {
+    margin-bottom: 15px;
+}
+
+hr {
+    margin: 8px 0;
+}
+
+.cardFooter {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
 }
