@@ -21,6 +21,9 @@ const index = () => {
                 <nav className={`${styles.nav} ${isOpen ? styles.active : ''}`}>
                     <ul className={styles.menu}>
                         <li>
+                            <input type="text" name="search" placeholder="Search.." />
+                        </li>
+                        <li>
                             <a href="#">
                                 <FontAwesomeIcon icon={faQrcode} /> Dashboard
                             </a>

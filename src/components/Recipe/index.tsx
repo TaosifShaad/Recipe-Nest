@@ -16,6 +16,18 @@ const Recipe = () => {
       })
       .catch((error) => console.log(error));
   }, []);
+
+  // const fetchRecipes = (query) => {
+  //   const url = `https://dummyjson.com/recipes/search?q=${encodeURIComponent(query)}`;
+  //   fetch(url, {
+  //     method: "GET"
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setRecipes(data.recipes || []);
+  //     })
+  //     .catch((error) => console.error('Error fetching recipes:', error));
+  // };
   
   return (
     <>
