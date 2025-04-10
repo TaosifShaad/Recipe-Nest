@@ -10,13 +10,12 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons/faHeart'
 import { faBowlFood } from '@fortawesome/free-solid-svg-icons/faBowlFood'
 
 const index = ({ recipeInfo }) => {
-    console.log(recipeInfo)
     return (
         <div className={styles.recipeCard}>
             <img src={recipeInfo.image} alt="" />
             <div className={styles.container}>
                 {recipeInfo.mealType.map((type) => (
-                    <span style={{ color: 'red' }}>
+                    <span key={recipeInfo.key} style={{ color: 'red' }}>
                         | {type} |
                     </span>
                 ))}
