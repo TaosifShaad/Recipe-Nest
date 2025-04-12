@@ -6,6 +6,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { faFacebookF, faTwitter, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import styles from './Navbar.module.css'
+import { Link } from 'react-router-dom';
 
 
 const index = () => {
@@ -21,9 +22,9 @@ const index = () => {
                 <nav className={`${styles.nav} ${isOpen ? styles.active : ''}`}>
                     <ul className={styles.menu}>
                         <li>
-                            <a href="#">
-                                <FontAwesomeIcon icon={faQrcode} /> Dashboard
-                            </a>
+                            <Link to={"/favourites"}>
+                                <FontAwesomeIcon icon={faQrcode} /> Favourites
+                            </Link>
                         </li>
                         <li>
                             <a href="#">

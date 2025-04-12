@@ -31,7 +31,6 @@ const Recipe = () => {
         // setTags(data);
         const options = [{ label: 'All', value: '' }];
         data.forEach((t) => {
-          console.log(t)
           options.push({ label: t, value: t });
         });
         setTagOptions(options);

@@ -8,6 +8,7 @@ import { faFire } from '@fortawesome/free-solid-svg-icons/faFire'
 import { faEarthAmericas } from '@fortawesome/free-solid-svg-icons/faEarthAmericas'
 import { faHeart } from '@fortawesome/free-solid-svg-icons/faHeart'
 import { faBowlFood } from '@fortawesome/free-solid-svg-icons/faBowlFood'
+import { Link } from 'react-router'
 
 const index = ({ recipeInfo }) => {
     return (
@@ -38,7 +39,9 @@ const index = ({ recipeInfo }) => {
                 <ul><li>and more.....</li></ul>
                 <div className={styles.cardFooter}>
                     <div style={{marginTop:'34px'}}><FontAwesomeIcon icon={faBowlFood} /> {recipeInfo.caloriesPerServing} calories </div>
+                    <Link to={`/recipe/${recipeInfo.id}`}>
                     <button className={styles.recipeBtn}>View recipe</button>
+                    </Link>
                 </div>
             </div>
             <div className={styles.fav}>
