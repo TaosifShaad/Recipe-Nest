@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 // import Navbar from '../Navbar'
 import RecipeCard from '../RecipeCard'
 import styles from './Recipe.module.css'
-import { faXmark } from '@fortawesome/free-solid-svg-icons/faXmark';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons/faXmark'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Recipe = () => {
   const [recipes, setRecipes] = useState([]);

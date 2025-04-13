@@ -9,8 +9,22 @@ import { faEarthAmericas } from '@fortawesome/free-solid-svg-icons/faEarthAmeric
 import { faHeart } from '@fortawesome/free-solid-svg-icons/faHeart'
 import { faBowlFood } from '@fortawesome/free-solid-svg-icons/faBowlFood'
 import { Link } from 'react-router'
+import { useDispatch, useSelector } from 'react-redux'
+import { addFavorite, removeFavorite } from '../../redux/FavouritesSlice'
 
-const index = ({ recipeInfo }) => {
+const index = ({ recipeInfo, hideFavoritesFunctionalities = false }) => {
+    const dispatch = useDispatch();
+    const favorites = useSelector((state) => state.favorites);
+    const isFavorite = favorites.some((recipe) => recipe.id === recipeInfo.id);
+
+    const handleFavoriteToggle = (() => {
+        if (isFavorite) {
+            dispatch(removeFavorite(recipeInfo.id));
+        } else {
+            dispatch(addFavorite(recipeInfo));
+        }
+    });
+
     return (
         <div className={styles.recipeCard}>
             <img src={recipeInfo.image} alt="" />
@@ -38,15 +52,17 @@ const index = ({ recipeInfo }) => {
                 ))}
                 <ul><li>and more.....</li></ul>
                 <div className={styles.cardFooter}>
-                    <div style={{marginTop:'34px'}}><FontAwesomeIcon icon={faBowlFood} /> {recipeInfo.caloriesPerServing} calories </div>
+                    <div style={{ marginTop: '34px' }}><FontAwesomeIcon icon={faBowlFood} /> {recipeInfo.caloriesPerServing} calories </div>
                     <Link to={`/recipe/${recipeInfo.id}`}>
-                    <button className={styles.recipeBtn}>View recipe</button>
+                        <button className={styles.recipeBtn}>View recipe</button>
                     </Link>
                 </div>
             </div>
-            <div className={styles.fav}>
-                <FontAwesomeIcon icon={faHeart} />
-            </div>
+            {!hideFavoritesFunctionalities && (
+                <div className={styles.favouriteIcon} onClick={handleFavoriteToggle}>
+                    <FontAwesomeIcon icon={faHeart} color={isFavorite ? 'magenta' : 'white'} />
+                </div>
+            )}
         </div>
     )
 }
