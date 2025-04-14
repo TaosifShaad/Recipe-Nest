@@ -19,7 +19,7 @@ const index = ({ recipeInfo, hideFavoritesFunctionalities = false }) => {
 
     const handleFavoriteToggle = (() => {
         if (isFavorite) {
-            dispatch(removeFavorite(recipeInfo.id));
+            dispatch(removeFavorite({ id: recipeInfo.id }));
         } else {
             dispatch(addFavorite(recipeInfo));
         }
@@ -59,7 +59,7 @@ const index = ({ recipeInfo, hideFavoritesFunctionalities = false }) => {
                 </div>
             </div>
             {!hideFavoritesFunctionalities && (
-                <div className={styles.favouriteIcon} onClick={handleFavoriteToggle}>
+                <div className={styles.fav} onClick={handleFavoriteToggle}>
                     <FontAwesomeIcon icon={faHeart} color={isFavorite ? 'magenta' : 'white'} />
                 </div>
             )}

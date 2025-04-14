@@ -8,14 +8,16 @@ const index = () => {
 
   return (
     <>
-      <div>Favourite recipes</div>
+    <div className={styles.title}>Favourite recipes</div>
+    <div className={styles.favouritesContainer}>
       {favourites.length > 0 ? (
         favourites.map((recipe) => (
-          <RecipeCard key={recipe.id} recipeInfo={recipe} hideFavoritesFunctionalities={true} />
+          <RecipeCard key={recipe.id} recipeInfo={recipe}  />
         ))
       ) : (
         <p>No favourite recipes found.</p>
       )}
+    </div>
     </>
   )
 }
