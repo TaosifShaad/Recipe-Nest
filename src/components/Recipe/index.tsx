@@ -4,6 +4,7 @@ import RecipeCard from '../RecipeCard'
 import styles from './Recipe.module.css'
 import { faXmark } from '@fortawesome/free-solid-svg-icons/faXmark'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Loader from '../Loader'
 
 const Recipe = () => {
   const [recipes, setRecipes] = useState([]);
@@ -12,6 +13,8 @@ const Recipe = () => {
   // const [tags, setTags] = useState([]);
   const [selectedTag, setSelectedTag] = useState('');
   const [tagOptions, setTagOptions] = useState([{ label: 'All', value: '' }]);
+  const [loading, setLoading] = useState(false);
+
 
 
   const mealTypes = [
@@ -40,6 +43,7 @@ const Recipe = () => {
 
 
   const fetchRecipes = (query) => {
+    setLoading(true);
     const url = query
       ? `https://dummyjson.com/recipes/search?q=${encodeURIComponent(query)}`
       : `https://dummyjson.com/recipes`;
@@ -49,26 +53,34 @@ const Recipe = () => {
       .then((res) => res.json())
       .then((data) => {
         setRecipes(data.recipes || []);
+        setLoading(false);
       })
-      .catch((error) => console.error('Error fetching recipes:', error));
+      .catch((error) => {
+        console.error('Error fetching recipes:', error);
+        setLoading(false);
+      });
   };
 
   const fetchFilteredRecipes = (mealType) => {
+    setLoading(true);
     const url = `https://dummyjson.com/recipes/meal-type/${encodeURIComponent(mealType)}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setRecipes(data.recipes || []);
+        setLoading(false);
       })
       .catch((error) => console.error('Error fetching filtered recipes:', error));
   };
 
   const fetchTagRecipes = (tag) => {
+    setLoading(true);
     const url = `https://dummyjson.com/recipes/tag/${encodeURIComponent(tag)}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setRecipes(data.recipes || []);
+        setLoading(false);
       })
       .catch((error) =>
         console.error('Error fetching recipes for tag:', error)
@@ -139,7 +151,7 @@ const Recipe = () => {
 
         <div className={styles.filterAndCard}>
           <div className={styles.filters}>
-            <div className={styles.filterContainer}>
+            {!loading && <div className={styles.filterContainer}>
               <h4>Meal Types</h4>
               <hr />
               <div className={styles.filterOptions}>
@@ -157,9 +169,9 @@ const Recipe = () => {
                   </label>
                 ))}
               </div>
-            </div>
+            </div>}
 
-            <div className={styles.filterContainer}>
+            {!loading && <div className={styles.filterContainer}>
               <h4>Tags</h4>
               <hr />
               <div className={styles.filterOptions}>
@@ -177,11 +189,13 @@ const Recipe = () => {
                   </label>
                 ))}
               </div>
-            </div>
+            </div>}
           </div>
 
           <div>
-            {recipes.length > 0 ? (
+            {loading ? (
+              <Loader />
+            ) : recipes.length > 0 ? (
               recipes.map((recipe) => (
                 <RecipeCard key={recipe.id} recipeInfo={recipe} />
               ))
