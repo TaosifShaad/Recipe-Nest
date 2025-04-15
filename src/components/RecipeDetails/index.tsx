@@ -9,6 +9,8 @@ import { faEarthAmericas } from '@fortawesome/free-solid-svg-icons/faEarthAmeric
 import { faHeart } from '@fortawesome/free-solid-svg-icons/faHeart'
 import { faBowlFood } from '@fortawesome/free-solid-svg-icons/faBowlFood'
 import StarRating from '../StarRating';
+import { faTags } from '@fortawesome/free-solid-svg-icons/faTags';
+import { faListCheck } from '@fortawesome/free-solid-svg-icons/faListCheck';
 
 
 const index = () => {
@@ -44,44 +46,65 @@ const index = () => {
   }, []);
 
   return (
-    <div>
-      <div className={styles.leftContainer}>
-        <h1>{recipe.name}</h1>
-        <div className={styles.foodImg}>
-          <img src={recipe.image} alt="recipe image" />
+    <>
+      <div className={styles.container}>
+        <div className={styles.leftContainer}>
+        <h1 className={styles.title}>{recipe.name}</h1>
+          <div className={styles.foodImg}>
+            <img src={recipe.image} alt="recipe image" />
+          </div>
+          <div className={styles.rating}>
+            <StarRating rating={recipe.rating} ratingCount={recipe.reviewCount} />
+            <hr></hr>
+          </div>
+          <div className={styles.smallDetails}>
+            <div className={styles.cuisine}>
+              <FontAwesomeIcon icon={faEarthAmericas} /> {recipe.cuisine}
+            </div>
+            <div className={styles.calories}>
+              <div><FontAwesomeIcon icon={faBowlFood} /> {recipe.caloriesPerServing} calories </div>
+            </div>
+            <div className={styles.prepTime}>
+              <FontAwesomeIcon icon={faClock} /> Preparation time: {recipe.prepTimeMinutes} min
+            </div>
+            <div className={styles.cookTime}>
+              <FontAwesomeIcon icon={faClock} /> Cooking time: {recipe.cookTimeMinutes} min
+            </div>
+            <div className={styles.difficulty}>
+              <FontAwesomeIcon icon={faFire} /> {recipe.difficulty} difficulty
+            </div>
+            <div className={styles.mealType}>
+              <FontAwesomeIcon icon={faListCheck} /> Type: {recipe.mealType}
+            </div>
+            <div className={styles.tags}>
+              <FontAwesomeIcon icon={faTags} /> Tags: {recipe.tags}
+            </div>
+            <div className={styles.servings}>
+              <FontAwesomeIcon icon={faUsers} /> {recipe.servings}
+            </div>
+          </div>
         </div>
-        <div className={styles.rating}>
-        <StarRating rating={recipe.rating} ratingCount={recipe.reviewCount} />
-        <hr></hr>
+
+        <div className={styles.rightContainer}>
+          <div className={styles.ingredients}>
+            <h2>Ingredients</h2>
+            <ul>
+              {recipe.ingredients && recipe.ingredients.map((ingredient, index) => (
+                <li key={index}>{ingredient}</li>
+              ))}
+            </ul>
           </div>
-        <div className={styles.smallDetails}>
-        <div className={styles.cuisine}>
-        <FontAwesomeIcon style={{ marginLeft: '25px' }} icon={faEarthAmericas} /> {recipe.cuisine}
-          </div>
-          <div className={styles.calories}>
-            <span> {recipe.caloriesPerServing} calories </span>
-          </div>
-          <div className={styles.prepTime}>
-          <FontAwesomeIcon style={{ marginLeft: '25px' }} icon={faClock} /> {recipe.prepTimeMinutes} min
-          </div>
-          <div className={styles.cookTime}>
-            <span> cooking time: {recipe.cookTimeMinutes} minutes </span>
-          </div>
-          <div className={styles.difficulty}>
-          <FontAwesomeIcon style={{ marginLeft: '25px' }} icon={faFire} /> {recipe.difficulty}
-          </div>
-          <div className={styles.mealType}>
-            <span> Type: {recipe.mealType} </span>
-          </div>
-          <div className={styles.tags}>
-            <span> Tags: {recipe.tags} </span>
-          </div>
-          <div className={styles.servings}>
-          <FontAwesomeIcon icon={faUsers} /> {recipe.servings}
+          <div className={styles.instructions}>
+            <h2>Instructions</h2>
+            <ul>
+              {recipe.instructions && recipe.instructions.map((instruction, index) => (
+                <li key={index}>{instruction}</li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

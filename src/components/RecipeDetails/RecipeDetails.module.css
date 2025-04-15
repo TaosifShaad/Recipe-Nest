@@ -1,0 +1,34 @@
+.container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    justify-content: center;
+    gap: 70px;
+    margin-left: 5px;
+    margin-bottom: 30px;
+    background-image: url('../../assets/food-ingredients-paper-white_182252-2665.avif');
+    /* background-size: auto 100%; */
+    background-repeat: no-repeat;
+}
+
+.ingredients {
+    margin-top: 28px;
+}
+
+.instructions {
+    margin-top: 20px;
+}
+
+.title {
+    /* text-align: center; */
+    margin-top: 77px;
+    /* width: 57%; */
+}
+
+.rightContainer {
+    width: 33%;
+}
+
+.leftContainer {
+    text-align: right;
+}
