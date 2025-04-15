@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './Favourites.module.css'
 import RecipeCard from '../RecipeCard'
 import { useSelector } from 'react-redux'
+import { ToastContainer } from 'react-toastify'
 
 const index = () => {
   const favourites = useSelector((state) => state.favorites);
@@ -18,6 +19,10 @@ const index = () => {
         <p>No favourite recipes found.</p>
       )}
     </div>
+    <ToastContainer
+            newestOnTop={false}
+            rtl={false}
+        />
     </>
   )
 }

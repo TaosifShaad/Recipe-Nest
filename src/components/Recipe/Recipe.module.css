@@ -7,7 +7,7 @@ h1 {
 }
 
 input[type=text] {
-    width: 100%;
+    width: 83%;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 8px;
@@ -20,7 +20,7 @@ input[type=text] {
     height: 43px;
     margin-top: -8px;
     /* background-size: 29px; */
-    margin-left: 25px;
+    margin-left: 158px;
 }
 
 .searchImg {
@@ -29,7 +29,7 @@ input[type=text] {
 }
 
 .searchContainer {
-    max-width: 60%;
+    max-width: 74%;
     margin: auto;
     display: flex;
     margin-bottom: 45px;

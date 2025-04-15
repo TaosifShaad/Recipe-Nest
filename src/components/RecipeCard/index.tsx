@@ -11,6 +11,8 @@ import { faBowlFood } from '@fortawesome/free-solid-svg-icons/faBowlFood'
 import { Link } from 'react-router'
 import { useDispatch, useSelector } from 'react-redux'
 import { addFavorite, removeFavorite } from '../../redux/FavouritesSlice'
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+
 
 const index = ({ recipeInfo, hideFavoritesFunctionalities = false }) => {
     const dispatch = useDispatch();
@@ -19,9 +21,32 @@ const index = ({ recipeInfo, hideFavoritesFunctionalities = false }) => {
 
     const handleFavoriteToggle = (() => {
         if (isFavorite) {
+            console.log('Removing from favorites:');
             dispatch(removeFavorite({ id: recipeInfo.id }));
+            toast.success('Removed from Favorites!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "dark",
+                transition: Bounce,
+            });
         } else {
             dispatch(addFavorite(recipeInfo));
+            toast.success('Added to Favorites!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: false,
+                progress: undefined,
+                theme: "colored",
+                transition: Bounce,
+            });
         }
     });
 

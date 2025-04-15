@@ -5,6 +5,8 @@ import styles from './Recipe.module.css'
 import { faXmark } from '@fortawesome/free-solid-svg-icons/faXmark'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Loader from '../Loader'
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+
 
 const Recipe = () => {
   const [recipes, setRecipes] = useState([]);
@@ -14,7 +16,6 @@ const Recipe = () => {
   const [selectedTag, setSelectedTag] = useState('');
   const [tagOptions, setTagOptions] = useState([{ label: 'All', value: '' }]);
   const [loading, setLoading] = useState(false);
-
 
 
   const mealTypes = [
@@ -56,8 +57,18 @@ const Recipe = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.error('Error fetching recipes:', error);
         setLoading(false);
+        toast.error(error.message, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: false,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
       });
   };
 
@@ -70,7 +81,19 @@ const Recipe = () => {
         setRecipes(data.recipes || []);
         setLoading(false);
       })
-      .catch((error) => console.error('Error fetching filtered recipes:', error));
+      .catch((error) => {
+        toast.error(error.message, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: false,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
+      });
   };
 
   const fetchTagRecipes = (tag) => {
@@ -82,9 +105,19 @@ const Recipe = () => {
         setRecipes(data.recipes || []);
         setLoading(false);
       })
-      .catch((error) =>
-        console.error('Error fetching recipes for tag:', error)
-      );
+      .catch((error) => {
+        toast.error(error.message, {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: false,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
+      });
   };
 
   useEffect(() => {

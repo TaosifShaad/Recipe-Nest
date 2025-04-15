@@ -3,6 +3,7 @@ import React from 'react'
 import Recipe from './components/Recipe'
 import Navbar from './components/Navbar'
 import './App.css'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -11,6 +12,10 @@ function App() {
     <>
       <Navbar />
       <Recipe />
+      <ToastContainer
+            newestOnTop={false}
+            rtl={false}
+        />
     </>
   )
 }
