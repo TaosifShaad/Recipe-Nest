@@ -64,7 +64,7 @@ const index = ({ recipeInfo, hideFavoritesFunctionalities = false }) => {
                 <hr></hr>
                 <div className={styles.info}>
                     <FontAwesomeIcon icon={faUsers} /> {recipeInfo.servings}
-                    <FontAwesomeIcon style={{ marginLeft: '25px' }} icon={faClock} /> {recipeInfo.prepTimeMinutes} min
+                    <FontAwesomeIcon style={{ marginLeft: '25px' }} icon={faClock} /> {recipeInfo.cookTimeMinutes} min
                     <FontAwesomeIcon style={{ marginLeft: '25px' }} icon={faFire} /> {recipeInfo.difficulty}
                     <FontAwesomeIcon style={{ marginLeft: '25px' }} icon={faEarthAmericas} /> {recipeInfo.cuisine}
                 </div>
@@ -78,7 +78,7 @@ const index = ({ recipeInfo, hideFavoritesFunctionalities = false }) => {
                 <ul><li>and more.....</li></ul>
                 <div className={styles.cardFooter}>
                     <div style={{ marginTop: '34px' }}><FontAwesomeIcon icon={faBowlFood} /> {recipeInfo.caloriesPerServing} calories </div>
-                    <Link to={`/recipe/${recipeInfo.id}`}>
+                    <Link to={`/recipe/${recipeInfo.id}`} state={{ recipe: recipeInfo }}>
                         <button className={styles.recipeBtn}>View recipe</button>
                     </Link>
                 </div>
