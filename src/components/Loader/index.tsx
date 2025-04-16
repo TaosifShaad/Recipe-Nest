@@ -3,7 +3,9 @@ import styles from './Loader.module.css'
 
 const index = () => {
     return (
-        <span className={styles.loader}></span>
+        <div className={styles.loaderContainer}>
+            <span className={styles.loader}></span>
+        </div>
     )
 }
 

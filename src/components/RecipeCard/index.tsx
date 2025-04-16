@@ -84,8 +84,8 @@ const index = ({ recipeInfo, hideFavoritesFunctionalities = false }) => {
                 </div>
             </div>
             {!hideFavoritesFunctionalities && (
-                <div className={styles.fav} onClick={handleFavoriteToggle}>
-                    <FontAwesomeIcon icon={faHeart} color={isFavorite ? 'magenta' : 'white'} />
+                <div >
+                    <FontAwesomeIcon className={styles.fav} onClick={handleFavoriteToggle} icon={faHeart} color={isFavorite ? 'magenta' : 'white'} />
                 </div>
             )}
         </div>

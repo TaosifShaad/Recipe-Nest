@@ -28,7 +28,13 @@ ul {
 
 .fav {
     font-size: 30px;
+    transition: all .2s ease-in;
     /* color: magenta; */
+}
+
+.fav:hover {
+    color: rgb(255, 126, 238);
+    cursor: pointer;
 }
 
 .recipeBtn {
@@ -41,6 +47,12 @@ ul {
     color: white;
     background: orange;
     font-weight: bolder;
+    transition: all .2s ease-in;
+}
+
+.recipeBtn:hover {
+    background: #ffa5008c;
+    cursor: pointer;
 }
 
 .info {

@@ -46,6 +46,7 @@ input[type=text] {
         margin-bottom: 2px;
         border-radius: 8px;
         border: none;
+        transition: all .2s ease-in;
 }
 
 .clrButton {
