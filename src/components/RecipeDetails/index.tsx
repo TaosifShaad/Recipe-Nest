@@ -12,6 +12,7 @@ import StarRating from '../StarRating';
 import { faTags } from '@fortawesome/free-solid-svg-icons/faTags';
 import { faListCheck } from '@fortawesome/free-solid-svg-icons/faListCheck';
 import Loader from '../Loader';
+import Navbar from '../Navbar';
 
 
 const index = () => {
@@ -53,6 +54,7 @@ const index = () => {
 
   return (
     <>
+      <Navbar />
       {loading ?
         <div className={styles.loadingContainer}><Loader /></div> :
         <div className={styles.container}>
@@ -82,10 +84,14 @@ const index = () => {
                 <FontAwesomeIcon icon={faFire} /> {recipe.difficulty} difficulty
               </div>
               <div className={styles.mealType}>
-                <FontAwesomeIcon icon={faListCheck} /> Type: {recipe.mealType}
+                <FontAwesomeIcon icon={faListCheck} /> Type: {recipe.mealType?.map((type, index) => (
+                  <span key={index} style={{color: 'green'}}>| {type} |</span>
+                ))}
               </div>
               <div className={styles.tags}>
-                <FontAwesomeIcon icon={faTags} /> Tags: {recipe.tags}
+                <FontAwesomeIcon icon={faTags} /> Tags: {recipe.tags?.map((tag, index) => (
+                  <span key={index} style={{color: 'green'}}> | {tag} | </span>
+                ))}
               </div>
               <div className={styles.servings}>
                 <FontAwesomeIcon icon={faUsers} /> {recipe.servings}

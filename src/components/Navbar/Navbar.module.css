@@ -35,7 +35,7 @@ body {
 .logo {
   font-size: 28px;
   font-weight: 600;
-  color: #31344b;
+  color: #31344b !important;
 }
 
 /* Navigation Menu (base style) */

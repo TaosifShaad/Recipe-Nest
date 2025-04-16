@@ -3,12 +3,14 @@ import styles from './Favourites.module.css'
 import RecipeCard from '../RecipeCard'
 import { useSelector } from 'react-redux'
 import { ToastContainer } from 'react-toastify'
+import Navbar from '../Navbar'
 
 const index = () => {
   const favourites = useSelector((state) => state.favorites);
 
   return (
     <>
+    <Navbar />
     <div className={styles.title}>Favourite recipes</div>
     <div className={styles.favouritesContainer}>
       {favourites.length > 0 ? (
